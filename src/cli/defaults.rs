@@ -22,11 +22,19 @@ Rammstein.
 
 */
 
-pub type Font = [&'static str; 11];
+/// # `Font`.
+/// Define a font with `characters` and a `size`.
+pub struct Font { 
+	pub characters: [&'static str; 11],
+	/// `size`: (x; y) for all characters. 
+	pub size: (usize, usize)
+}
 
 pub const COLON: usize = 10;
 
-pub const FONT_ANSI_SHADOW: Font = [
+pub const FONT_ANSI_SHADOW: Font = Font {
+	size: (9, 6),
+	characters: [
 "
  ██████╗ 
 ██╔═████╗
@@ -115,4 +123,5 @@ pub const FONT_ANSI_SHADOW: Font = [
    ╚═╝   
          
 "
-];
+]
+};

@@ -3,11 +3,11 @@
 
 use std::{thread, time};
 
-use crate::cli::defaults;
+use crate::cli::{defaults, controls};
 
 /// # `Cli`.
 /// Print the app to the terminal and holds the state.
-struct Cli {
+pub struct Cli {
 	current_clock: time::Duration,
 	refresh_rate: time::Duration,
 	font: defaults::Font,
@@ -29,6 +29,9 @@ impl Cli {
 	/// Start and run the main loop.
 	pub fn run(self: &mut Self) -> () {
 		self.start = time::SystemTime::now();
+		self.looping = true;
+
+		print!("{}", self.font.characters[0]);
 
 		while self.looping {
 			self.update();
@@ -51,6 +54,10 @@ impl Cli {
 
 	/// Draw the clock, updated by `update`.
 	fn draw(self: &Self) -> () {
-		println!("Time: {}", self.current_clock.as_secs());
+		let index: usize = (self.current_clock.as_secs() % 11) as usize;
+		
+		controls::move_up(self.font.size.1 as u32 + 1);
+		controls::clear_to_bottom();
+		print!("{}", self.font.characters[index]);
 	}
 }

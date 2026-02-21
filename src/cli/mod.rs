@@ -3,5 +3,8 @@
 //! 
 //! Manage displays in the terminal.
 
-mod defaults;
-mod base;
+pub mod defaults;
+pub mod base;
+pub mod controls;
+
+pub use base::Cli;
