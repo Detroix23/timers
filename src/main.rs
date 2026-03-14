@@ -5,6 +5,7 @@
 
 use std::time;
 
+mod timer;
 mod cli;
 
 /// Main entry point.

@@ -1,6 +1,7 @@
 //! # `Timer`.
 //! src/cli/defaults.rs
 
+use crate::cli::fonts;
 
 /*
 Ogre.
@@ -22,17 +23,9 @@ Rammstein.
 
 */
 
-/// # `Font`.
-/// Define a font with `characters` and a `size`.
-pub struct Font { 
-	pub characters: [&'static str; 11],
-	/// `size`: (x; y) for all characters. 
-	pub size: (usize, usize)
-}
+pub const LINE_BREAKS: [char; 2] = ['\n', '\r'];
 
-pub const COLON: usize = 10;
-
-pub const FONT_ANSI_SHADOW: Font = Font {
+pub const FONT_ANSI_SHADOW: fonts::Font = fonts::Font {
 	size: (9, 6),
 	characters: [
 "
