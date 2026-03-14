@@ -36,3 +36,13 @@ pub fn clear_to_bottom() -> () {
 		ansi::control_sequences::ErasePage::ActivePositionToEnd
 	)));
 }
+
+/// Sequence: `DMI`.
+pub fn cursor_disable() -> () {
+	print!("{}", ansi::independent_control_functions::DMI);
+}
+
+/// Sequence: `EMI`.
+pub fn cursor_enable() -> () {
+	print!("{}", ansi::independent_control_functions::EMI);
+}

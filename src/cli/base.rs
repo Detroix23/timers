@@ -34,6 +34,7 @@ impl Cli {
 		self.start = time::SystemTime::now();
 		self.looping = true;
 
+		controls::cursor_disable();
 		print!("{}", self.font.characters[0]);
 
 		while self.looping {
@@ -42,6 +43,8 @@ impl Cli {
 
 			thread::sleep(self.refresh_rate);
 		}
+
+		controls::cursor_enable();
 	}
 
 	/// Update the state of the app, every run of the loop.
